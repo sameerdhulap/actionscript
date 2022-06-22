@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - "main"
-    paths: 
-      - 'package.json'
+    # paths: 
+    #  - 'package.json'
 
 jobs:
   react_ios:
@@ -40,7 +40,7 @@ jobs:
           yarn
           yarn prepare
       - name: publish rc
-        run: echo '//registry.npmjs.org/:_authToken=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'>.npmrc
+        run: echo '//registry.npmjs.org/:_authToken=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'>.npmrc
         
       - name: Putting on npm repo
         run: npm publish --access public
