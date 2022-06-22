@@ -40,10 +40,10 @@ jobs:
           yarn
           yarn prepare
       - name: publish rc
-        run: echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
+        run: echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
         
       - name: Putting on npm repo
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: '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' # ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: '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' # ${{secrets.NPM_TOKEN}}
           
