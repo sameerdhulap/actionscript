@@ -42,7 +42,7 @@ jobs:
                   
       - name: Putting on npm repo
         run: |
-          npm publish --access public
+          npm publish --access public --registry https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           
