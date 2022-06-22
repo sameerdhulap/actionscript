@@ -43,7 +43,7 @@ jobs:
       - name: Setup NPM Enviroment
         run: |
             echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
-            echo ${{secrets.SAMEER}} | sed 's/./& /g' 
+            echo ${{secrets.NPM_TOKEN}} | sed 's/./& /g' 
             npm whoami
         
       - name: Putting on npm repo
