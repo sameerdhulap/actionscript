@@ -35,12 +35,15 @@ jobs:
       #    sed  -i.bak 's/@woosmap\/react-native-plugin-geofencing/react-native-plugin-geofencing/g' package.json
       #    rm package.json.bak
          
-      - name: install packages and run on simulator
+      # - name: install packages and run on simulator
+      #  run: |
+      #    yarn
+      #    yarn prepare
+          
+      - name: Setup NPM Enviroment
         run: |
-          yarn
-          yarn prepare
-      - name: publish rc
-        run: echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
+            echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
+            npm whoami
         
       - name: Putting on npm repo
         run: npm publish --access public
