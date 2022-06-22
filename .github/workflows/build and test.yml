@@ -42,11 +42,11 @@ jobs:
           
       - name: Setup NPM Enviroment
         run: |
-            echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
+            echo '//registry.npmjs.org/:_authToken=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'>~/.npmrc
             npm whoami
         
       - name: Putting on npm repo
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: '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' # ${{secrets.NPM_TOKEN}}
+        #env:
+        #  NODE_AUTH_TOKEN: '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' # ${{secrets.NPM_TOKEN}}
           
