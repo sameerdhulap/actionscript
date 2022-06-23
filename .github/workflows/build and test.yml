@@ -38,6 +38,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           
   release:
+    needs: react_ios
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
