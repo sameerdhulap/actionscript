@@ -26,9 +26,13 @@ jobs:
       #    sed  -i.bak 's/@woosmap\/react-native-plugin-geofencing/react-native-plugin-geofencing/g' package.json
       #    rm package.json.bak
          
-      - name: build and 
+      - name: Build it 
         run: |
           yarn
+          cd example
+          yarn
+          cd ios
+          pod install
                   
       - name: Run simulator
         run: |
