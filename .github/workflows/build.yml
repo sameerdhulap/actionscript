@@ -1,0 +1,40 @@
+name: Build - react
+
+on:  
+  push:
+    branches:
+      - "main"
+    paths: 
+      - 'package.json'
+
+jobs:
+  react_ios:
+    runs-on: macos-latest
+        
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+         node-version: 16.x
+         registry-url: https://registry.npmjs.org/
+       
+      # - name: Corrected Package name
+      #  run: |
+      #    sed  -i.bak 's/@woosmap\/react-native-plugin-geofencing/react-native-plugin-geofencing/g' package.json
+      #    rm package.json.bak
+         
+      - name: build and run simulator
+        run: |
+          yarn
+                  
+      - name: Putting on npm repo
+        run: |
+          yarn example run ios
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          
+
+          
