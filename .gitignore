@@ -1,0 +1,8 @@
+
+lib/*
+node_modules/*
+example/ios/JunemonthTryExample.xcodeproj/xcuserdata/*
+example/ios/JunemonthTryExample.xcworkspace/xcuserdata/*
+example/ios/Pods/*
+example/node_modules/*
+*.lock
