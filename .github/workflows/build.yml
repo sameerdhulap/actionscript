@@ -36,7 +36,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: yarn example run android --variant arrelease
+          script: yarn example run android
           
 
           
