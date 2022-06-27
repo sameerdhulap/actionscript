@@ -31,14 +31,12 @@ jobs:
           yarn
           cd example
           yarn
-          cd ios
-          pod install
                   
-      - name: Run simulator
-        run: |
-          yarn example run ios
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: yarn example run android --variant arrelease
           
 
           
