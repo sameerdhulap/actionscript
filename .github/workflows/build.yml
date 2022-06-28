@@ -48,6 +48,7 @@ jobs:
         with:
           api-level: 28
           profile: pixel_2
+          emulator-build: 6110076
           script: yarn example run android
           
 
