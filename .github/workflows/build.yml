@@ -40,17 +40,27 @@ jobs:
         run: |
           yarn
           cd example
-          yarn
-                  
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2
+          yarn          
+      #- name: run tests
+      #  uses: reactivecircus/android-emulator-runner@v2
+      #  with:
+      #    api-level: 28
+      #    profile: pixel_2
+      #    emulator-build: 6110076
+      #    emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+      #    disable-animations: false
+      #    script: yarn example run android
+      
+      - name:  'Automated Version Bump'
+        uses:  'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          api-level: 28
-          profile: pixel_2
-          emulator-build: 6110076
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
-          script: yarn example run android
+          minor-wording:  'add,Adds,new'
+          major-wording:  'MAJOR,cut-major'
+          patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
+                                      # defaulting to a patch bump.
+          rc-wording:     'RELEASE,alpha'
           
 
           
