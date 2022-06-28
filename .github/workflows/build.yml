@@ -49,6 +49,8 @@ jobs:
           api-level: 28
           profile: pixel_2
           emulator-build: 6110076
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
           script: yarn example run android
           
 
