@@ -1,6 +1,6 @@
 {
   "name": "junemonth_try",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "test github action live",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
