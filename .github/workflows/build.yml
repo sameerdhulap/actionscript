@@ -46,7 +46,8 @@ jobs:
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 28
+          profile: pixel_2
           script: yarn example run android
           
 
