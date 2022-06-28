@@ -1,0 +1,57 @@
+name: Build - android app and test
+
+on:  
+  push:
+    branches:
+      - "main"
+    #paths: 
+    #  - 'package.json'
+
+jobs:
+  android_build_test:
+    runs-on: macos-12
+        
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+         node-version: 16.x
+         registry-url: https://registry.npmjs.org/
+         
+      #- shell: bash
+      #  run: mkdir toolchains
+      #- name: specify NDK
+      #  uses: ravinderjangra/android-ndk-toolchain-setup@0.2
+      #  with:
+      #    api: '31'
+      #    arch: 'x86'
+      #    install-location: 'toolchains'
+      #    force: true
+       
+      # - name: Corrected Package name
+      #  run: |
+      #    sed  -i.bak 's/@woosmap\/react-native-plugin-geofencing/react-native-plugin-geofencing/g' package.json
+      #    rm package.json.bak
+         
+      - name: Build it 
+        run: |
+          yarn
+          cd example
+          yarn          
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          profile: pixel_2
+          emulator-build: 6110076
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: yarn example run android
+      
+      
+          
+
+          
