@@ -21,22 +21,15 @@ jobs:
          node-version: 16.x
          registry-url: https://registry.npmjs.org/
          
-      - name: Prepare NDK dir for caching
-        run: |
-          sudo mkdir -p /usr/local/lib/android/sdk/ndk
-          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
-          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
-          
-      - name: NDK Cache
-        id: ndk-cache
-        uses: actions/cache@v2
+      - shell: bash
+        run: mkdir toolchains
+      - name: specify NDK
+        uses: ravinderjangra/android-ndk-toolchain-setup@0.2
         with:
-          path: /usr/local/lib/android/sdk/ndk
-          key: ndk-cache-21.0.6113669-v2
-          
-      - name: Install NDK
-        if: steps.ndk-cache.outputs.cache-hit != 'true'
-        run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669"
+          api: '31'
+          arch: 'x86'
+          install-location: 'toolchains'
+          force: true
       
        
       # - name: Corrected Package name
@@ -53,7 +46,7 @@ jobs:
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 31
           script: yarn example run android
           
 
