@@ -55,7 +55,7 @@ jobs:
           emulator-build: 6110076
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
-          script: cd example && cd android && ./gradlew installDebug --stacktrace
+          script: yarn example run android
       
       
           
