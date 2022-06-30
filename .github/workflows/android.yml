@@ -21,6 +21,12 @@ jobs:
          node-version: 16.x
          registry-url: https://registry.npmjs.org/
          
+      - name: check enviroment
+        run: |
+          echo $ANDROID_NDK_HOME
+          echo $ANDROID_SDK_ROOT
+      
+         
       #- shell: bash
       #  run: mkdir toolchains
       #- name: specify NDK
@@ -49,7 +55,7 @@ jobs:
           emulator-build: 6110076
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
-          script: yarn example run android
+          script: cd example && cd android && ./gradlew installDebug --stacktrace
       
       
           
