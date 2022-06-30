@@ -22,9 +22,10 @@ jobs:
          registry-url: https://registry.npmjs.org/
          
       - name: check enviroment
-         run:|
-              echo $ANDROID_NDK_HOME
-              echo $ANDROID_SDK_ROOT
+        run: |
+          echo $ANDROID_NDK_HOME
+          echo $ANDROID_SDK_ROOT
+      
          
       #- shell: bash
       #  run: mkdir toolchains
