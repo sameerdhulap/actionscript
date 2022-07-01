@@ -11,5 +11,17 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+    - name: Salutation
     - run: |
-        echo The PR was merged here
+        echo "The PR was merged here"
+        
+    - name:  'Automated Version Bump'
+      uses:  'phips28/gh-action-bump-version@master'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          minor-wording:  'add,Adds,new'
+          major-wording:  'MAJOR,cut-major'
+          patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
+                                      # defaulting to a patch bump.
+          rc-wording:     'RELEASE,alpha'
