@@ -2,21 +2,20 @@ name: PR - Close
 
 on:
   pull_request:
-    #types:
-    #  - closed
+    types:
+      - closed
     branches:
       - 'main'
 
 jobs:
   new_version:
-    #if: github.event.pull_request.merged == true
-    if: github.event.pull_request.merged == false
+    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == false
     runs-on: macos-12
     steps:
-    - name: 'Salutation'
-    - run: |
-        echo The PR was merged here
-        
+    - name: Check out Git repository
+      uses: actions/checkout@v2
+      
     - name: 'Automated Version Bump'
       uses: 'phips28/gh-action-bump-version@master'
       env:
