@@ -7,7 +7,7 @@ on:
     branches:    
       - 'main'
 jobs:
-  android_build_test:
+  PR_test:
     runs-on: macos-12
         
     steps:
