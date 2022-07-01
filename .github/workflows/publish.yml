@@ -37,27 +37,27 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           
-  release:
-    needs: react_ios
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-        
-      - name: Capture release version 
-        id: vars
-        run: echo ::set-output name=tag::$(node -p "require('./package.json').version")
-        
-      - name: Check output
-        env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.vars.outputs.tag }} 
-          
-      - uses: avakar/tag-and-release@v1
-        with:
-          tag_name: ${{ steps.vars.outputs.tag }} 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #release:
+  #  needs: react_ios
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Check out Git repository
+  #      uses: actions/checkout@v2
+  #      
+  #    - name: Capture release version 
+  #      id: vars
+  #      run: echo ::set-output name=tag::$(node -p "require('./package.json').version")
+  #      
+  #    - name: Check output
+  #      env:
+  #        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+  #      run: |
+  #        echo $RELEASE_VERSION
+  #        echo ${{ steps.vars.outputs.tag }} 
+  #        
+  #    - uses: avakar/tag-and-release@v1
+  #      with:
+  #        tag_name: ${{ steps.vars.outputs.tag }} 
+  #      env:
+  #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
