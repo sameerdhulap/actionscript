@@ -5,25 +5,45 @@ on:
     branches:    
       - 'main'
 jobs:
-  PR_test:
+  pr_test:
     runs-on: macos-12
         
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
         
-      - name: check enviroment
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+         node-version: 16.x
+         registry-url: https://registry.npmjs.org/
+         
+      - name: Update swift version
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.6.1"
+         
+      - name: Build it 
         run: |
-          echo $ANDROID_NDK_HOME
-          echo $ANDROID_SDK_ROOT
+          yarn
+          cd example
+          yarn
           
-      - name: check File content
+      - name: run ios tests
         run: |
-          cat sameer.txt
+          cd ios
+          pod install
+          yarn example run ios
           
-      - name: master file content
-        run: |
-          cat main.txt
+      - name: run android tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          profile: pixel_2
+          emulator-build: 6110076
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: yarn example run android
       
 
 
