@@ -1,4 +1,5 @@
 name: PR - Close
+
 on:
   pull_request:
     types:
@@ -9,17 +10,17 @@ on:
 jobs:
   new_version:
     if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+    runs-on: macos-12
     steps:
     - name: 'Salutation'
     - run: |
         echo The PR was merged here
         
     - name:  'Automated Version Bump'
-      uses:  'phips28/gh-action-bump-version@master'
-      env:
+        uses:  'phips28/gh-action-bump-version@master'
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
+        with:
           minor-wording:  'add,Adds,new'
           major-wording:  'MAJOR,cut-major'
           patch-wording:  'patch,fixes'     # Providing patch-wording will override commits
