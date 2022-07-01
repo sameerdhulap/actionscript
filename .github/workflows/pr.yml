@@ -2,8 +2,6 @@ name: PR - test
 
 on:
   pull_request:
-    types:
-      - opened
     branches:    
       - 'main'
 jobs:
@@ -22,6 +20,10 @@ jobs:
       - name: check File content
         run: |
           cat sameer.txt
+          
+      - name: master file content
+        run: |
+          cat main.txt
       
 
 
