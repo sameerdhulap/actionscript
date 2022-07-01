@@ -2,15 +2,15 @@ name: PR - Close
 
 on:
   pull_request:
-    #types:
-    #  - closed
+    types:
+      - closed
     branches:
       - 'main'
 
 jobs:
   new_version:
-    #if: github.event.pull_request.merged == true
-    if: github.event.pull_request.merged == false
+    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == false
     runs-on: macos-12
     steps:
     - name: Check out Git repository
