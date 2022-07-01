@@ -12,7 +12,10 @@ jobs:
     #if: github.event.pull_request.merged == true
     if: github.event.pull_request.merged == false
     runs-on: macos-12
-    steps:    
+    steps:
+    - name: Check out Git repository
+      uses: actions/checkout@v2
+      
     - name: 'Automated Version Bump'
       uses: 'phips28/gh-action-bump-version@master'
       env:
