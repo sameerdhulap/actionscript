@@ -1,8 +1,9 @@
+name: PR - Close
 on:
   pull_request:
     types:
       - closed
-     branches:
+    branches:
       - 'main'
 
 jobs:
