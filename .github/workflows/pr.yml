@@ -20,6 +20,10 @@ jobs:
       - name: check File content
         run: |
           cat sameer.txt
+          
+      - name: master file content
+        run: |
+          cat main.txt
       
 
 
