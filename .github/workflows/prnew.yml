@@ -28,11 +28,10 @@ jobs:
           yarn
           cd example
           yarn
+          cd ios && pod install
           
       - name: run ios tests
         run: |
-          cd ios
-          pod install
           yarn example run ios
           
       - name: run android tests
