@@ -43,11 +43,3 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
           script: yarn example run android
-      
-
-
-      
-      
-          
-
-          
